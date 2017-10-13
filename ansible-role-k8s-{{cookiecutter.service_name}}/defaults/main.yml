@@ -1,0 +1,37 @@
+coe_config_file:
+coe_config_context:
+coe_host: 'http://localhost:8443'
+action: provision
+
+service_name: {{cookiecutter.service_name}}
+namespace: openstack
+
+hieradata: {}
+hieradata_file: ''
+
+clouds_config: 'clouds-secret'
+
+# Example of custom configuration for a specific project.
+# Use this to override any default configs and/or hieradata
+# {{cookiecutter.service_name}}_config:
+#  database:
+#    connection: "mysql+pymysql://root:weakpassword@mariadb:3306/glance"
+
+# NOTE(flaper87): Auth section for config file
+#  keystone_authtoken:
+#    auth_uri: 'http://keystone:35357'
+#    auth_url: 'http://keystone:5000/v3'
+#    password: weakpassword
+#    username: '{{cookiecutter.service_name}}'
+#    project: 'admin'
+
+# NOTE(flaper87): Uncomment if the service needs to register an endpoint in
+# keystone. Set the right endpoints and username.
+#  keystone_default_domain: 'default'
+#  keystone_region: 'regionOne'
+#  keystone_project: 'admin'
+#  keystone_public_url: 'http://{{cookiecutter.service_name}}:9292'
+#  keystone_internal_url: 'http://{{cookiecutter.service_name}}:9292'
+#  keystone_admin_url: 'http://{{cookiecutter.service_name}}:9292'
+#  keystone_user_password: 'weakpassword'
+#  keystone_username: '{{cookiecutter.service_name}}'
