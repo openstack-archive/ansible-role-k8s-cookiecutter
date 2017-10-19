@@ -34,8 +34,8 @@
   ignore_errors: yes
   k8s_v1_config_map:
     host: "{{coe_host}}"
-    context: "{{kube_context}}"
-    kubeconfig: "{{config_file}}"{%endraw%}
+    context: "{{coe_config_context}}"
+    kubeconfig: "{{coe_config_file}}"{%endraw%}
     name: {{cookiecutter.service_name}}{%raw%}
     namespace: "{{namespace}}"
     state: present
