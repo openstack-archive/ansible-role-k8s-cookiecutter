@@ -3,13 +3,15 @@ coe_config_context:
 coe_host: 'http://localhost:8443'
 action: provision
 
-service_name: {{cookiecutter.service_name}}
 namespace: openstack
 
-hieradata: {}
-hieradata_file: ''
-
 clouds_config: 'clouds-secret'
+
+service_name: {{cookiecutter.service_name}}
+{{cookiecutter.service_name}}_port: 9292
+{{cookiecutter.service_name}}_hostname: "{%raw%}{{service_name}}{%endraw%}"
+{{cookiecutter.service_name}}_address: "{%raw%}{{{%endraw%}{{cookiecutter.service_name}}_hostname{%raw%}}}{%endraw%}"
+{{cookiecutter.service_name}}_use_service_ip: true
 
 # Example of custom configuration for a specific project.
 # Use this to override any default configs and/or hieradata
