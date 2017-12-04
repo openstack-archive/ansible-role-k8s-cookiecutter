@@ -1,0 +1,46 @@
+- project:
+    name: openstack/ansible-role-k8s-{{cookiecutter.service_name}}
+    check:
+      jobs:
+        - ansible-role-k8s-{{cookiecutter.service_name}}-kubernetes-centos
+        - ansible-role-k8s-{{cookiecutter.service_name}}-openshift-centos
+
+- job:
+    name: ansible-role-k8s-{{cookiecutter.service_name}}-kubernetes-centos
+    parent:  ansible-role-k8s-base
+    nodeset: ansible-role-k8s-centos
+    vars:
+      coe: kubernetes
+      project_name: ansible-role-k8s-{{cookiecutter.service_name}}
+      ansible_role_k8s_required:
+# NOTE(flaper87): Listing projects here forces
+# the CI job to include these roles in the main
+# playbook, and therefore install the service.
+#        - ansible-role-k8s-mariadb
+#        - ansible-role-k8s-keystone
+    required-projects:
+# NOTE(flaper87): you will likely need one or
+# more of the projects below
+#      - openstack/ansible-role-k8s-mariadb
+#      - openstack/ansible-role-k8s-keystone
+      - openstack/ansible-role-k8s-{{cookiecutter.service_name}}
+
+- job:
+    name: ansible-role-k8s-{{cookiecutter.service_name}}-openshift-centos
+    parent:  ansible-role-k8s-base
+    nodeset: ansible-role-k8s-centos
+    vars:
+      coe: openshift
+      project_name: ansible-role-k8s-{{cookiecutter.service_name}}
+      ansible_role_k8s_required:
+# NOTE(flaper87): Listing projects here forces
+# the CI job to include these roles in the main
+# playbook, and therefore install the service.
+#        - ansible-role-k8s-mariadb
+#        - ansible-role-k8s-keystone
+    required-projects:
+# NOTE(flaper87): you will likely need one or
+# more of the projects below
+#      - openstack/ansible-role-k8s-mariadb
+#      - openstack/ansible-role-k8s-keystone
+      - openstack/ansible-role-k8s-{{cookiecutter.service_name}}
