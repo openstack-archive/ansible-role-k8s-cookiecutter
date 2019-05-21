@@ -1,1 +1,0 @@
-{%raw%}- include: "{{ action }}.yml"{%endraw%}

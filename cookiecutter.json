@@ -1,6 +1,0 @@
-{
-    "service_name": "OpenStack's service name",
-    "service_type": "Keystone's service type",
-    "version": "0.0.1",
-    "year":"2017"
-}
